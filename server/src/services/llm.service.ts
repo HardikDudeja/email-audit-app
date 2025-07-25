@@ -8,8 +8,9 @@ const genAI = new GoogleGenAI({
     process.env.GEMINI_API_KEY || "AIzaSyDDO8aQ_cY-aulTB4FwxbTkvVlyX1VUIbo",
 });
 
-export async function auditEmail(email: string, rules: Rule[]): Promise<any> {
+export async function auditEmail(email: string): Promise<any> {
   const results: AuditResult[] = [];
+  const rules: Rule[] = emailRules;
 
   for (const rule of rules) {
     const prompt: string = `
@@ -33,14 +34,18 @@ export async function auditEmail(email: string, rules: Rule[]): Promise<any> {
         model: "gemini-2.5-flash",
         contents: prompt,
       });
-      console.log("Response from Gemini:", response);
-      console.log("printing text", response.text);
-      return response.text;
+      const text = response?.text?.trim() || "";
+      const passed: boolean = text?.startsWith("PASS:") || false;
+      results.push({
+        ruleId: rule.id,
+        description: rule.description,
+        passed,
+        justification: text,
+        weight: rule.weight,
+      });
     } catch (err) {
       console.error("Error occurred while communicating with Gemini:", err);
     }
-    break;
   }
+  return results;
 }
-
-console.log(auditEmail("This is a test email", emailRules));
