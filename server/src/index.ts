@@ -1,8 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import auditRoutes from "./routes/audit.routes";
-
 dotenv.config();
+import auditRoutes from "./routes/audit.routes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;

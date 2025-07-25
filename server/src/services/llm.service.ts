@@ -4,8 +4,7 @@ import { Rule, AuditResult } from "../types";
 import { emailRules } from "../rules/email_rules";
 
 const genAI = new GoogleGenAI({
-  apiKey:
-    process.env.GEMINI_API_KEY || "AIzaSyDDO8aQ_cY-aulTB4FwxbTkvVlyX1VUIbo",
+  apiKey: process.env.GEMINI_API_KEY || "GEMINI_API_KEY",
 });
 
 export async function auditEmail(email: string): Promise<any> {
