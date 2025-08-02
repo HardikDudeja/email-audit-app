@@ -13,7 +13,7 @@ export default function Features() {
           </p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="text-center">
         <CardContent>
           <Zap className="h-12 w-12 text-green-600 mx-auto mb-4" />
           <h3 className="font-semibold text-lg mb-2">Dynamic Rules</h3>
@@ -22,7 +22,7 @@ export default function Features() {
           </p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="text-center">
         <CardContent>
           <FileText className="h-12 w-12 text-purple-600 mx-auto mb-4" />
           <h3 className="font-semibold text-lg mb-2">Detailed Reports</h3>
