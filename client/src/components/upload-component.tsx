@@ -9,7 +9,7 @@ interface FileUploadProps {
   onFilesUploaded: (files: File[]) => void;
 }
 
-export function FileUpload({ onFilesUploaded }: FileUploadProps) {
+export function FileDrop({ onFilesUploaded }: FileUploadProps) {
   const [error, setError] = useState<string>("");
 
   const onDrop = useCallback(
@@ -43,7 +43,7 @@ export function FileUpload({ onFilesUploaded }: FileUploadProps) {
     });
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 mx-0">
       <Card
         {...getRootProps()}
         className={`border-2 border-dashed p-8 text-center cursor-pointer transition-colors ${
