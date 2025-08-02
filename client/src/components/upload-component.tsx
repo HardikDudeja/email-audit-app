@@ -43,7 +43,7 @@ export function FileDrop({ onFilesUploaded }: FileUploadProps) {
     });
 
   return (
-    <div className="space-y-4 mx-0">
+    <div className="space-y-4">
       <Card
         {...getRootProps()}
         className={`border-2 border-dashed p-8 text-center cursor-pointer transition-colors ${
